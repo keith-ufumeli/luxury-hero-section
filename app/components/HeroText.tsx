@@ -12,42 +12,63 @@ const HeroText: React.FC<HeroTextProps> = ({ content, className = '' }) => {
   const { tagline, headline, description, buttons } = content
 
   return (
-    <div className={`w-full lg:w-1/2 lg:pr-16 text-center lg:text-left ${className}`}>
+    <div className={`space-y-6 sm:space-y-8 lg:space-y-10 ${className}`}>
       
       {/* Tagline */}
-      <div className="hero-text mb-6">
-        <p className="text-amber-300 text-sm md:text-base font-medium tracking-widest uppercase opacity-90">
-          <span className="inline-block mr-2" aria-hidden="true">✨</span>
-          {tagline}
+      <div className="hero-text">
+        <p className="tagline text-luxury-gold-300 opacity-90 relative inline-block">
+          <span className="inline-block mr-2 text-luxury-gold-400 animate-pulse" aria-hidden="true">
+            ✨
+          </span>
+          <span className="relative">
+            {tagline}
+            <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-luxury-gold-400 via-luxury-gold-300 to-transparent opacity-60"></span>
+          </span>
         </p>
       </div>
       
       {/* Main Headline */}
-      <div className="hero-text mb-8">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-relaxed tracking-tight font-serif">
-          <span className="block text-white mb-2">{headline.line1}</span>
-          <span className="block text-amber-400 text-gradient-gold mb-2">{headline.line2}</span>
-          <span className="block text-white mb-2">{headline.line3}</span>
+      <div className="hero-text">
+        <h1 className="headline text-white relative">
+          <span className="block leading-none">{headline.line1}</span>
+          <span className="block text-gradient-gold leading-none my-2 sm:my-3 lg:my-4 relative">
+            {headline.line2}
+            <span className="absolute -inset-4 bg-luxury-gold-400/10 blur-xl rounded-full opacity-50 animate-pulse-gold"></span>
+          </span>
+          <span className="block text-luxury-pearl leading-none">{headline.line3}</span>
         </h1>
       </div>
       
       {/* Description */}
-      <div className="hero-text mb-10">
-        <p className="text-neutral-300 text-base md:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed text-balance">
+      <div className="hero-text">
+        <p className="description text-neutral-300 max-w-lg mx-auto lg:mx-0 relative">
           {description}
         </p>
       </div>
       
       {/* CTA Buttons */}
-      <div className="hero-text flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-        <CTAButton
-          {...buttons.primary}
-          aria-label={`${buttons.primary.text} - Browse our luxury jewelry collection`}
-        />
-        <CTAButton
-          {...buttons.secondary}
-          aria-label={`${buttons.secondary.text} - Discover our precious gems`}
-        />
+      <div className="hero-text">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start items-center">
+          <CTAButton
+            {...buttons.primary}
+            className="w-full sm:w-auto min-w-[200px] relative group"
+            aria-label={`${buttons.primary.text} - Browse our luxury jewelry collection`}
+          />
+          <CTAButton
+            {...buttons.secondary}
+            className="w-full sm:w-auto min-w-[200px] relative group"
+            aria-label={`${buttons.secondary.text} - Discover our precious gems`}
+          />
+        </div>
+      </div>
+      
+      {/* Decorative Elements */}
+      <div className="hero-text opacity-60">
+        <div className="flex justify-center lg:justify-start space-x-8 text-luxury-gold-400/40">
+          <div className="text-xs animate-bounce-gentle">◆</div>
+          <div className="text-xs animate-bounce-gentle animation-delay-500">✦</div>
+          <div className="text-xs animate-bounce-gentle animation-delay-1000">◆</div>
+        </div>
       </div>
     </div>
   )
