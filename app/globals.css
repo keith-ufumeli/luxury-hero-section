@@ -1,18 +1,48 @@
 /* src/app/globals.css */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables */
+/* CSS Custom Properties */
 :root {
+  /* Colors */
   --color-luxury-gold: #facc15;
   --color-luxury-gold-light: #fde047;
   --color-luxury-gold-dark: #eab308;
   --color-luxury-black: #0a0a0a;
-  --color-luxury-gray: #1a1a1a;
+  --color-luxury-charcoal: #1a1a1a;
+  --color-luxury-slate: #2a2a2a;
+  --color-luxury-silver: #8a8a8a;
+  --color-luxury-pearl: #f8f8f8;
   
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-inter);
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #2a2a2a 70%, #000000 100%);
+  --gradient-text-gold: linear-gradient(135deg, #facc15 0%, #fde047 50%, #eab308 100%);
+  --gradient-button-primary: linear-gradient(135deg, #facc15 0%, #fde047 100%);
+  --gradient-button-primary-hover: linear-gradient(135deg, #fde047 0%, #facc15 100%);
+  --gradient-overlay: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+  
+  /* Typography */
+  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  
+  /* Shadows */
+  --shadow-luxury-sm: 0 2px 8px rgba(250, 204, 21, 0.1);
+  --shadow-luxury-md: 0 4px 16px rgba(250, 204, 21, 0.15);
+  --shadow-luxury-lg: 0 8px 32px rgba(250, 204, 21, 0.2);
+  --shadow-luxury-xl: 0 16px 64px rgba(250, 204, 21, 0.25);
+  --shadow-elegant-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-elegant-xl: 0 16px 64px rgba(0, 0, 0, 0.25);
+  
+  /* Animations */
+  --animation-duration-fast: 0.3s;
+  --animation-duration-normal: 0.6s;
+  --animation-duration-slow: 1s;
+  --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* Base Styles */
@@ -24,75 +54,328 @@
 
 html {
   scroll-behavior: smooth;
+  font-feature-settings: 'liga' 1, 'calt' 1;
 }
 
 body {
   background-color: var(--color-luxury-black);
-  color: white;
+  color: var(--color-luxury-pearl);
   font-family: var(--font-sans);
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Utility Classes */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .bg-luxury-gradient {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #000000 100%);
-  }
-  
-  .text-gradient-gold {
-    background: linear-gradient(135deg, #facc15 0%, #fde047 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .shadow-luxury {
-    box-shadow: 0 25px 50px -12px rgba(250, 204, 21, 0.25);
-  }
-  
-  .backdrop-blur-luxury {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-}
-
-/* Custom Components */
-@layer components {
-  .btn-primary {
-    @apply bg-luxury-gold text-black px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-luxury-gold-light hover:shadow-xl transition-all duration-300 transform hover:scale-105;
-  }
-  
-  .btn-secondary {
-    @apply border-2 border-white px-8 py-4 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 font-medium;
-  }
-  
-  .hero-image {
-    @apply relative overflow-hidden rounded-2xl shadow-2xl;
-  }
-  
-  .hero-text {
-    @apply opacity-0 translate-y-10;
-    /* Fallback for when GSAP doesn't work */
-    animation: fadeInFallback 0.5s ease-out 1s forwards;
-  }
-}
-
-/* Fallback animation for hero text */
-@keyframes fadeInFallback {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Smooth Scrolling */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+@keyframes fadeInFallback {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .bg-luxury-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .text-gradient-gold {
+    background: var(--gradient-text-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .shadow-luxury {
+    box-shadow: var(--shadow-luxury-xl);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant-xl);
+  }
+  
+  .backdrop-blur-luxury {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+  
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
+/* Component Classes */
+@layer components {
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center px-8 py-4 text-black font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-400/50 active:scale-95 overflow-hidden;
+    background: var(--gradient-button-primary);
+    box-shadow: var(--shadow-luxury-md);
+  }
+  
+  .btn-primary:hover {
+    background: var(--gradient-button-primary-hover);
+    box-shadow: var(--shadow-luxury-lg);
+  }
+  
+  .btn-primary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-primary:hover:before {
+    left: 100%;
+  }
+  
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center px-8 py-4 text-white font-medium rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50 active:scale-95 overflow-hidden;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(20px);
+  }
+  
+  .btn-secondary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-secondary:hover:before {
+    left: 100%;
+  }
+  
+  .hero-image {
+    @apply relative overflow-hidden rounded-2xl transition-all duration-700;
+    box-shadow: var(--shadow-elegant-lg);
+    /* Fallback animation to ensure visibility */
+    animation: fadeInFallback 0.8s ease-out 2s forwards;
+  }
+  
+  .hero-image img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+  
+  .hero-image:hover img {
+    @apply scale-110;
+  }
+  
+  .hero-image:hover {
+    box-shadow: var(--shadow-elegant-xl);
+  }
+  
+  .hero-text {
+    @apply opacity-0 translate-y-10 transition-all duration-1000;
+    /* Fallback animation to ensure visibility */
+    animation: fadeInFallback 0.8s ease-out 1.5s forwards;
+  }
+  
+  .hero-text.animate-in {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .decorative-element {
+    @apply absolute rounded-full;
+    background: radial-gradient(circle at center, currentColor 0%, transparent 70%);
+  }
+  
+  .decorative-element.pulse {
+    animation: pulseGold 3s ease-in-out infinite;
+  }
+  
+  .decorative-element.bounce {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+  
+  .tagline {
+    @apply text-amber-300 font-medium tracking-widest uppercase;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+  }
+  
+  .headline {
+    @apply font-bold leading-tight tracking-tight font-serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .description {
+    @apply text-neutral-300 leading-relaxed;
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+  }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+  .hero-image {
+    border-radius: 1rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    @apply px-6 py-3 text-sm;
+  }
+}
+
+/* High DPI Display Optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  body {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero-text {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* Dark Mode Optimization */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
   }
 }
 
@@ -103,5 +386,10 @@ body {
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    border: 2px solid black !important;
   }
 }

@@ -1,0 +1,327 @@
+/* src/styles/mobile.css */
+/* Mobile-First Optimizations for Luxury Hero Section */
+
+/* Touch-Friendly Interactions */
+@media (hover: none) and (pointer: coarse) {
+    .hero-image:hover img {
+      transform: none;
+    }
+    
+    .hero-image:active img {
+      transform: scale(1.05);
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: none;
+    }
+    
+    .btn-primary:active,
+    .btn-secondary:active {
+      transform: scale(0.98);
+    }
+  }
+  
+  /* Mobile Typography Adjustments */
+  @media (max-width: 640px) {
+    .tagline {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+    }
+    
+    .headline {
+      font-size: clamp(1.75rem, 8vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    
+    .description {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      max-width: 100%;
+    }
+    
+    /* Improved button sizing for mobile */
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.875rem;
+      min-height: 3rem;
+    }
+  }
+  
+  /* Tablet-Specific Adjustments */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .tagline {
+      font-size: 0.875rem;
+    }
+    
+    .headline {
+      font-size: clamp(2.25rem, 6vw, 3.5rem);
+    }
+    
+    .description {
+      font-size: 1rem;
+      max-width: 28rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      padding: 1rem 2rem;
+      font-size: 0.9375rem;
+    }
+  }
+  
+  /* Landscape Mobile Adjustments */
+  @media (max-width: 1024px) and (orientation: landscape) {
+    .hero-section {
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    
+    .hero-content {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .hero-images {
+      flex: 1;
+      max-width: 24rem;
+    }
+    
+    .headline {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      margin-bottom: 1rem;
+    }
+    
+    .description {
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .button-group {
+      flex-direction: row;
+      gap: 1rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      min-width: auto;
+    }
+  }
+  
+  /* Ultra-Wide Mobile Adjustments */
+  @media (max-width: 390px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .hero-section {
+      padding: 3rem 0;
+    }
+    
+    .headline {
+      font-size: 1.75rem;
+      line-height: 1.2;
+    }
+    
+    .description {
+      font-size: 0.8125rem;
+    }
+    
+    .button-group {
+      gap: 0.75rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.8125rem;
+      min-height: 2.75rem;
+    }
+    
+    .image-grid {
+      gap: 0.75rem;
+    }
+    
+    .hero-image {
+      border-radius: 1rem;
+    }
+  }
+  
+  /* Performance Optimizations for Mobile */
+  @media (max-width: 768px) {
+    /* Reduce animation complexity on mobile */
+    .hero-text {
+      animation: none;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    .hero-image {
+      animation: none;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    .decorative-element {
+      animation-duration: 4s;
+    }
+    
+    /* Optimize blur effects */
+    .backdrop-blur-luxury {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    
+    /* Reduce shadow complexity */
+    .shadow-luxury-xl {
+      box-shadow: 0 8px 32px rgba(250, 204, 21, 0.15);
+    }
+    
+    .shadow-elegant-xl {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  /* Accessibility Improvements for Mobile */
+  @media (max-width: 768px) {
+    /* Increase touch target sizes */
+    .btn-primary,
+    .btn-secondary {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    
+    /* Improve focus indicators */
+    .btn-primary:focus,
+    .btn-secondary:focus {
+      outline: 2px solid #facc15;
+      outline-offset: 2px;
+    }
+    
+    /* Ensure readable text spacing */
+    .headline {
+      margin-bottom: 1.5rem;
+    }
+    
+    .description {
+      margin-bottom: 2rem;
+    }
+    
+    /* Improve button spacing */
+    .button-group {
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+  }
+  
+  /* Dark Mode Mobile Adjustments */
+  @media (prefers-color-scheme: dark) and (max-width: 768px) {
+    .hero-section {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
+    }
+    
+    .tagline {
+      color: #fde047;
+    }
+    
+    .headline {
+      color: #ffffff;
+    }
+    
+    .description {
+      color: #d4d4d4;
+    }
+  }
+  
+  /* Reduced Motion Mobile Support */
+  @media (prefers-reduced-motion: reduce) and (max-width: 768px) {
+    .hero-text,
+    .hero-image,
+    .decorative-element {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      transform: none !important;
+      transition: background-color 0.2s ease, color 0.2s ease !important;
+    }
+    
+    .hero-image img {
+      transition: none !important;
+    }
+  }
+  
+  /* High Contrast Mobile Support */
+  @media (prefers-contrast: high) and (max-width: 768px) {
+    .tagline {
+      color: #ffff00;
+    }
+    
+    .headline {
+      color: #ffffff;
+      text-shadow: 2px 2px 4px #000000;
+    }
+    
+    .description {
+      color: #ffffff;
+    }
+    
+    .btn-primary {
+      background: #ffff00;
+      color: #000000;
+      border: 2px solid #ffffff;
+    }
+    
+    .btn-secondary {
+      background: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+  }
+  
+  /* Print Styles for Mobile */
+  @media print {
+    .hero-section {
+      min-height: auto;
+      padding: 2rem 1rem;
+      background: white !important;
+      color: black !important;
+    }
+    
+    .tagline,
+    .headline,
+    .description {
+      color: black !important;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      border: 2px solid black !important;
+      background: white !important;
+      color: black !important;
+    }
+    
+    .hero-image {
+      box-shadow: none !important;
+    }
+    
+    .decorative-element {
+      display: none !important;
+    }
+  }
