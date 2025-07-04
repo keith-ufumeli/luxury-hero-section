@@ -1,7 +1,7 @@
 // src/components/HeroSection.tsx
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { HeroSectionProps } from '@/types/hero'
 import HeroText from './HeroText'
 import ImageGrid from './ImageGrid'
@@ -16,11 +16,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   const heroRef = useRef<HTMLElement>(null)
   const animationRef = useRef<GSAPTimeline | null>(null)
-  const [animationFailed, setAnimationFailed] = useState(false)
 
   useEffect(() => {
     if (!shouldAnimate()) {
-      setAnimationFailed(true)
       return
     }
 
@@ -28,21 +26,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       // Initialize GSAP animations
       animationRef.current = animateHeroElements()
       
-      // Fallback: if animation doesn't start within 2 seconds, show content
-      const fallbackTimer = setTimeout(() => {
-        setAnimationFailed(true)
-      }, 2000)
-
       // Cleanup function
       return () => {
-        clearTimeout(fallbackTimer)
         if (animationRef.current) {
           animationRef.current.kill()
         }
       }
     } catch (error) {
       console.error('GSAP animation failed:', error)
-      setAnimationFailed(true)
     }
   }, [])
 
@@ -50,7 +41,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       ref={heroRef}
       className={`
-        min-h-screen bg-luxury-gradient relative overflow-hidden
+        min-h-screen bg-luxury-gradient relative overflow-hidden pt-20
         ${className}
       `}
       aria-label="Hero section showcasing luxury jewelry collection"
@@ -62,19 +53,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       />
       
       {/* Main Content Container */}
-      <div className="container mx-auto px-6 py-16 lg:py-24 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center min-h-screen lg:min-h-0">
+      <div className="container mx-auto px-6 py-12 lg:py-16 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-5rem)] lg:min-h-0">
           
           {/* Left Column - Text Content */}
           <HeroText 
             content={content}
-            className={`order-2 lg:order-1 ${animationFailed ? 'opacity-100 translate-y-0' : ''}`}
+            className="order-2 lg:order-1"
           />
           
           {/* Right Column - Image Grid */}
           <ImageGrid 
             images={images}
-            className="order-1 lg:order-2 mb-12 lg:mb-0"
+            className="order-1 lg:order-2 mb-8 lg:mb-0"
           />
         </div>
       </div>

@@ -1,11 +1,12 @@
 // src/app/page.tsx
 import React from 'react'
-import { HeroSection } from '@/components'
+import { HeroSection, Navbar } from '@/components'
 import { heroContent, heroImages } from '@/data/heroContent'
 
 export default function HomePage() {
   return (
     <main className="bg-luxury-black">
+      <Navbar />
       <HeroSection 
         content={heroContent}
         images={heroImages}

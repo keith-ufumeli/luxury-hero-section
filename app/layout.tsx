@@ -3,9 +3,25 @@ import { inter, playfair } from './fonts'
 import './globals.css'
 
 export const metadata = {
+  metadataBase: new URL(process.env.NODE_ENV === 'production' 
+    ? 'https://luxury-hero-section.vercel.app' 
+    : 'http://localhost:3000'
+  ),
   title: 'Luxury Jewelry Collection',
   description: 'Adorned with meaning, worn with love. Discover our exquisite collection of luxury jewelry.',
   keywords: 'luxury jewelry, diamonds, gold, rings, necklaces, bracelets',
+  openGraph: {
+    title: 'Luxury Jewelry Collection',
+    description: 'Adorned with meaning, worn with love. Discover our exquisite collection of luxury jewelry.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'LUXE Jewelry',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Luxury Jewelry Collection',
+    description: 'Adorned with meaning, worn with love. Discover our exquisite collection of luxury jewelry.',
+  },
 }
 
 export default function RootLayout({
