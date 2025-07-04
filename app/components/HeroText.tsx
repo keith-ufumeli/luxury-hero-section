@@ -24,10 +24,10 @@ const HeroText: React.FC<HeroTextProps> = ({ content, className = '' }) => {
       
       {/* Main Headline */}
       <div className="hero-text mb-8">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight font-serif">
-          <span className="block text-white">{headline.line1}</span>
-          <span className="block text-amber-400 text-gradient-gold">{headline.line2}</span>
-          <span className="block text-white">{headline.line3}</span>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-relaxed tracking-tight font-serif">
+          <span className="block text-white mb-2">{headline.line1}</span>
+          <span className="block text-amber-400 text-gradient-gold mb-2">{headline.line2}</span>
+          <span className="block text-white mb-2">{headline.line3}</span>
         </h1>
       </div>
       

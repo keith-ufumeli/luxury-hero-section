@@ -11,8 +11,8 @@
   --color-luxury-black: #0a0a0a;
   --color-luxury-gray: #1a1a1a;
   
-  --font-serif: var(--font-cinzel);
-  --font-sans: var(--font-source-sans);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
 }
 
 /* Base Styles */

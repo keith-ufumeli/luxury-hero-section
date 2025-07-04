@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'serif': ['var(--font-cinzel)', 'serif'],
-        'sans': ['var(--font-source-sans)', 'sans-serif'],
+        'serif': ['var(--font-playfair)', 'serif'],
+        'sans': ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
         'luxury-gold': '#facc15',
