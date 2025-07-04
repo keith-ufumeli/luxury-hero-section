@@ -4,7 +4,6 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['images.unsplash.com', 'unsplash.com'],
     remotePatterns: [
       {
         protocol: 'https',

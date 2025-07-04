@@ -1,4 +1,6 @@
 // src/components/HeroSection.tsx
+"use client"
+
 import React, { useEffect, useRef } from 'react'
 import { HeroSectionProps } from '@/types/hero'
 import HeroText from './HeroText'

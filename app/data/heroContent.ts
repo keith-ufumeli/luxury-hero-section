@@ -33,7 +33,7 @@ export const heroImages: HeroImage[] = [
     decorativeColor: "bg-amber-400"
   },
   {
-    src: "https://images.unsplash.com/photo-1601618338433-41d1d7835ccd?w=400&h=500&fit=crop&crop=center",
+    src: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=400&h=500&fit=crop&crop=center",
     alt: "Luxury gold bracelet with intricate craftsmanship",
     width: 400,
     height: 500,
@@ -49,7 +49,7 @@ export const heroImages: HeroImage[] = [
     decorativeColor: "bg-blue-400"
   },
   {
-    src: "https://images.unsplash.com/photo-1603561596112-6a132309c2d8?w=400&h=500&fit=crop&crop=center",
+    src: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=500&fit=crop&crop=center",
     alt: "Emerald earrings with brilliant cut gems",
     width: 400,
     height: 500,
