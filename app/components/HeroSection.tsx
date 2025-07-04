@@ -1,7 +1,7 @@
 // src/components/HeroSection.tsx
 "use client"
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { HeroSectionProps } from '@/types/hero'
 import HeroText from './HeroText'
 import ImageGrid from './ImageGrid'
@@ -16,18 +16,33 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   const heroRef = useRef<HTMLElement>(null)
   const animationRef = useRef<GSAPTimeline | null>(null)
+  const [animationFailed, setAnimationFailed] = useState(false)
 
   useEffect(() => {
-    if (!shouldAnimate()) return
+    if (!shouldAnimate()) {
+      setAnimationFailed(true)
+      return
+    }
 
-    // Initialize GSAP animations
-    animationRef.current = animateHeroElements()
+    try {
+      // Initialize GSAP animations
+      animationRef.current = animateHeroElements()
+      
+      // Fallback: if animation doesn't start within 2 seconds, show content
+      const fallbackTimer = setTimeout(() => {
+        setAnimationFailed(true)
+      }, 2000)
 
-    // Cleanup function
-    return () => {
-      if (animationRef.current) {
-        animationRef.current.kill()
+      // Cleanup function
+      return () => {
+        clearTimeout(fallbackTimer)
+        if (animationRef.current) {
+          animationRef.current.kill()
+        }
       }
+    } catch (error) {
+      console.error('GSAP animation failed:', error)
+      setAnimationFailed(true)
     }
   }, [])
 
@@ -53,7 +68,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Left Column - Text Content */}
           <HeroText 
             content={content}
-            className="order-2 lg:order-1"
+            className={`order-2 lg:order-1 ${animationFailed ? 'opacity-100 translate-y-0' : ''}`}
           />
           
           {/* Right Column - Image Grid */}

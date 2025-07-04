@@ -1,19 +1,20 @@
 // src/app/fonts.ts
 // Google Fonts configuration using Next.js 15
 
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Cinzel, Source_Sans_3 } from 'next/font/google'
 
-export const inter = Inter({
+export const cinzel = Cinzel({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-cinzel',
+  weight: ['400', '500', '600', '700', '800', '900'],
 })
 
-export const playfair = Playfair_Display({
+export const sourceSans = Source_Sans_3({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-playfair',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-source-sans',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 // Alternative: Local font import (if you have custom fonts)
