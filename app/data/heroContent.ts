@@ -11,13 +11,13 @@ export const heroContent: HeroContent = {
   description: "Each delicate design carries the warmth of a feeling, the magic of a moment, and the beauty of a promise kept.",
   buttons: {
     primary: {
-      text: "SHOP COLLECTION",
-      href: "/collection",
+      text: "DISCOVER PIECES",
+      href: "#",
       variant: "primary"
     },
     secondary: {
-      text: "Explore Our Gems",
-      href: "/gems",
+      text: "VIEW GALLERY",
+      href: "#",
       variant: "secondary"
     }
   }
